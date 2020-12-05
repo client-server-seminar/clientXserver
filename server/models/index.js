@@ -12,13 +12,13 @@ if (config.use_env_variable) {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-// db.User = require('./user')(sequelize, Sequelize);
+db.Detail = require('./detail')(sequelize, Sequelize);
 // db.Post = require('./post')(sequelize, Sequelize);
 // db.Like = require('./like')(sequelize, Sequelize);
 
 /** 1 : N   User : Post */
-// db.User.hasMany(db.Post, { onDelete: 'cascade' });
-// db.Post.belongsTo(db.User);
+db.Main.hasMany(db.Detail, { onDelete: 'cascade' });
+db.Detail.belongsTo(db.Main);
 
 /** N: M    User : Post => Like */
 // db.User.belongsToMany(db.Post, { through: 'Like', as: 'Liked' });
