@@ -16,6 +16,18 @@ module.exports = (sequelize, DataTypes) => {
         description: {
             type: DataTypes.TEXT(),
             allowNull: true
+        },
+        image: {
+            type: DataTypes.STRING(200),
+            allowNull: false,
+        },
+        supTitle: {
+            type: DataTypes.STRING(30),
+            allowNull: false,
+        },
+        subTitle: {
+            type: DataTypes.STRING(30),
+            allowNull: false,
         }
     }, {
       //모델의 옵션들을 지정하는곳    

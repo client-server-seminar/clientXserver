@@ -5,22 +5,23 @@ const sc = require('../modules/statusCode');
 module.exports = {
     readTop: async (req, res) => {
         try {
-            const {thumbnailImageUrl, title, author, description} = await Webtoon.findOne();
-            console.log(thumbnailImageUrl, title, author, description);
-            return res.status(sc.OK).send(ut.success(sc.OK, 'get top success'));
+            const data = await Webtoon.findOne({
+                attributes: ['thumbnailImageUrl', 'title', 'author']
+            });
+            return res.status(sc.OK).send(ut.success(sc.OK, 'get top success', data));
             
         } catch(err){
             console.error(err);
         }
     },
-    readDay: async (req, res) => {
+    readList: async (req, res) => {
         try{
-            const day = req.params.day; 
-            const webtoons = await Webtoon.findAll({where: {day: day}});
-            return res.status(sc.OK).send(ut.success(sc.OK, "요일별 게시물 조회 성공", webtoons));
+            const data = await Webtoon.findOne({
+                attributes: ['image', 'supTitle', 'subTitle']
+            });
+            return res.status(sc.OK).send(ut.success(sc.OK, 'get list success', data));
         } catch(err) {
-            console.log(err);
-            return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, "요일 별 게시물 조회 실패"));
+            console.error(err);
         }
     }
 };
