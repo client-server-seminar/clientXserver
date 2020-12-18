@@ -1,27 +1,20 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('Detail', {
-        thumbnail: {
-          type: DataTypes.STRING(100),
+      //모델의 Attributes (Column)을 정의하는곳
+        thumbnailImageUrl: {
+          type: DataTypes.STRING(200),
           allowNull: false,
         },
-        episodeNum: {
-            type: DataTypes.INTEGER(30),
-            allowNull: false,
+        num: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
         },
         title: {
           type: DataTypes.STRING(30),
           allowNull: false,
-        },
-        rate: {
-            type: DataTypes.INTEGER(30),
-            allowNull: false,
-        },
-        uploadDate: {
-            type: DataTypes.STRING(30),
-            allowNull: false,
         }
-
     }, {
+      //모델의 옵션들을 지정하는곳    
         freezeTableName: true,
         timestamps: true,
     });

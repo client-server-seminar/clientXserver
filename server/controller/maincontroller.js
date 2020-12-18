@@ -4,7 +4,14 @@ const sc = require('../modules/statusCode');
 
 module.exports = {
     readTop: async (req, res) => {
-        
+        try {
+            const {thumbnailImageUrl, title, author, description} = await Webtoon.findOne();
+            console.log(thumbnailImageUrl, title, author, description);
+            return res.status(sc.OK).send(ut.success(sc.OK, 'get top success'));
+            
+        } catch(err){
+            console.error(err);
+        }
     },
     readDay: async (req, res) => {
         try{
