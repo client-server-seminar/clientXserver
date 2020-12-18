@@ -1,8 +1,6 @@
-const util = require('../modules/util');
-const rm = require('../modules/responseMessage');
-const sc = require('../modules/statusCode');
 const { Detail } = require('../models');
-const { Op } = require('sequelize');
+const ut = require('../modules/util');
+const sc = require('../modules/statusCode');
 
 module.exports = {
     readDetail: async (req, res) => {
