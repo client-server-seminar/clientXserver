@@ -5,7 +5,7 @@ const sc = require('../modules/statusCode');
 module.exports = {
     readDetail: async (req, res) => {
         try {
-            const data = await Detail.findOne({
+            const data = await Detail.findAll({
                 attributes: ['thumbnailImageUrl', 'num', 'title']
             });
             return res.status(sc.OK).send(ut.success(sc.OK, 'get list success', data));
